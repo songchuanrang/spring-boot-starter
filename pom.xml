@@ -83,8 +83,8 @@
 					<autoVersionSubmodules>true</autoVersionSubmodules>
 				</configuration>
 			</plugin>
-		</plugins>
         -->
+		</plugins>
 	</build>
 
 
