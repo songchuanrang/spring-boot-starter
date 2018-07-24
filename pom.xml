@@ -80,7 +80,7 @@
 				<version>2.5.3</version>
 				<configuration>
 					<releaseProfiles>release</releaseProfiles>
-                    <releaseVersion>@{project.version}</releaseVersion>
+                    <releaseVersion>1.0.1</releaseVersion>
 					<developmentVersion>@{project.version}</developmentVersion>
 					<tagNameFormat>v@{project.version}</tagNameFormat>
 					<autoVersionSubmodules>true</autoVersionSubmodules>
