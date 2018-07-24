@@ -4,7 +4,7 @@
 
 	<groupId>com.baidu</groupId>
 	<artifactId>spring-boot-starter</artifactId>
-	<version>yes</version>
+	<version>1.1.1-SNAPSHOT</version>
 	<packaging>war</packaging>
 
 	<name>spring-boot-starter</name>
@@ -53,7 +53,7 @@
 		<connection>scm:git:https://github.com/ChuanRangSong/spring-boot-starter.git</connection>
 		<url>https://github.com/ChuanRangSong/spring-boot-starter</url>
 		<developerConnection>scm:git:https://github.com/ChuanRangSong/spring-boot-starter.git</developerConnection>
-	  <tag>y</tag>
+	  <tag>HEAD</tag>
   </scm>
 
 	<build>
