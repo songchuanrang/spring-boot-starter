@@ -80,7 +80,6 @@
 				<version>2.5.3</version>
 				<configuration>
 					<releaseLabel>HEAD</releaseLabel>
-					<releaseProfiles>release</releaseProfiles>
                     <releaseVersion>1.0.1</releaseVersion>
 					<developmentVersion>1.0.1-SNAPSHOT</developmentVersion>
 					<tagNameFormat>v@{project.version}</tagNameFormat>
