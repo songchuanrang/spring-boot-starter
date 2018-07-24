@@ -82,7 +82,7 @@
 					<releaseLabel>HEAD</releaseLabel>
 					<releaseProfiles>release</releaseProfiles>
                     <releaseVersion>1.0.1</releaseVersion>
-					<developmentVersion>@{project.version}</developmentVersion>
+					<developmentVersion>1.0.1-SNAPSHOT</developmentVersion>
 					<tagNameFormat>v@{project.version}</tagNameFormat>
 					<autoVersionSubmodules>true</autoVersionSubmodules>
 				</configuration>
