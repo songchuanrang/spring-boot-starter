@@ -5,7 +5,7 @@
 
 	<groupId>com.baidu</groupId>
 	<artifactId>spring-boot-starter</artifactId>
-	<version>1.0.0</version>
+	<version>1.0.0-SNAPSHOT</version>
 	<packaging>war</packaging>
 
 	<name>spring-boot-starter</name>
@@ -50,11 +50,11 @@
 		</dependency>
 	</dependencies>
 
-	<!-- scm>
-		<connection>scm:git:https://github.com/ChuanRangSong/java.git</connection>
-		<url>https://github.com/ChuanRangSong/java/tree/master/spring-boot-starter</url>
-		<developerConnection>scm:git:https://github.com/ChuanRangSong/java.git</developerConnection>
-	</scm -->
+	<scm>
+		<connection>scm:git:https://github.com/ChuanRangSong/spring-boot-starter.git</connection>
+		<url>https://github.com/ChuanRangSong/spring-boot-starter</url>
+		<developerConnection>scm:git:https://github.com/ChuanRangSong/spring-boot-starter.git</developerConnection>
+	</scm>
 
 	<build>
 		<finalName>spring-boot-starter</finalName>
@@ -66,7 +66,7 @@
 					<fork>true</fork>
 				</configuration>
 			</plugin>
-	<!--		<plugin>
+			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-compiler-plugin</artifactId>
 				<configuration>
@@ -83,7 +83,6 @@
 					<autoVersionSubmodules>true</autoVersionSubmodules>
 				</configuration>
 			</plugin>
-        -->
 		</plugins>
 	</build>
 
