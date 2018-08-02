@@ -2,11 +2,11 @@ package com.baidu.springbootstarter.model;
 
 public class User {
 
-    private String id;
+    private int id;
     private String username;
     private String password;
 
-    public String getId() {
+    public int getId() {
         return id;
     }
 
@@ -26,7 +26,16 @@ public class User {
         this.password = password;
     }
 
-    public void setId(String id) {
+    public void setId(int id) {
         this.id = id;
+    }
+
+    @Override
+    public String toString() {
+        return "User{" +
+                "id=" + id +
+                ", username='" + username + '\'' +
+                ", password='" + password + '\'' +
+                '}';
     }
 }

@@ -1,11 +1,17 @@
 package com.baidu.springbootstarter;
 
+import com.baidu.springbootstarter.model.User;
+import org.apache.commons.logging.LogFactory;
 import org.springframework.amqp.core.*;
+import org.springframework.amqp.rabbit.annotation.RabbitHandler;
+import org.springframework.amqp.rabbit.annotation.RabbitListener;
+import org.springframework.amqp.rabbit.config.SimpleRabbitListenerContainerFactory;
 import org.springframework.amqp.rabbit.connection.CachingConnectionFactory;
 import org.springframework.amqp.rabbit.connection.ConnectionFactory;
 import org.springframework.amqp.rabbit.core.ChannelAwareMessageListener;
 import org.springframework.amqp.rabbit.core.RabbitTemplate;
 import org.springframework.amqp.rabbit.listener.SimpleMessageListenerContainer;
+import org.springframework.amqp.support.converter.Jackson2JsonMessageConverter;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -54,14 +60,22 @@ public class SpringBootApplicationInitializer extends SpringBootServletInitializ
         connectionFactory.setPassword(this.mqRabbitPassword);
         connectionFactory.setVirtualHost(this.mqRabbitVirtualHost);
         connectionFactory.setPublisherConfirms(mqRabbitPublisherConfirms);
-
         return connectionFactory;
     }
 
     @Bean
     public RabbitTemplate rabbitTemplate() {
         RabbitTemplate template = new RabbitTemplate(connectionFactory());
+        template.setMessageConverter(new Jackson2JsonMessageConverter());
         return template;
+    }
+
+    @Bean
+    public SimpleRabbitListenerContainerFactory rabbitListenerContainerFactory(ConnectionFactory connectionFactory) {
+        SimpleRabbitListenerContainerFactory factory = new SimpleRabbitListenerContainerFactory();
+        factory.setConnectionFactory(connectionFactory);
+        factory.setMessageConverter(new Jackson2JsonMessageConverter());
+        return factory;
     }
 
     @Bean
@@ -79,8 +93,10 @@ public class SpringBootApplicationInitializer extends SpringBootServletInitializ
         return BindingBuilder.bind(queue()).to(defaultExchange()).with(ROUTING_KEY);
     }
 
-    @Bean
+    /*@Bean
     public SimpleMessageListenerContainer messageContainer() {
+        this.logger = LogFactory.getLog(getClass());
+
         SimpleMessageListenerContainer container = new SimpleMessageListenerContainer(connectionFactory());
         container.setQueues(queue());
         container.setExposeListenerChannel(true);
@@ -91,11 +107,11 @@ public class SpringBootApplicationInitializer extends SpringBootServletInitializ
 
             public void onMessage(Message message, com.rabbitmq.client.Channel channel) throws Exception {
                 byte[] body = message.getBody();
-                System.out.println("消费端接收到消息 : " + new String(body));
+                logger.info("消费端接收到消息 : " + new String(body));
                 channel.basicAck(message.getMessageProperties().getDeliveryTag(), false);
             }
         });
         return container;
-    }
+    }*/
 
 }
