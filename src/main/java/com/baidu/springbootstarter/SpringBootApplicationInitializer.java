@@ -91,7 +91,7 @@ public class SpringBootApplicationInitializer extends SpringBootServletInitializ
 
             public void onMessage(Message message, com.rabbitmq.client.Channel channel) throws Exception {
                 byte[] body = message.getBody();
-                logger.info("消费端接收到消息 : " + new String(body));
+                System.out.println("消费端接收到消息 : " + new String(body));
                 channel.basicAck(message.getMessageProperties().getDeliveryTag(), false);
             }
         });

@@ -14,11 +14,18 @@ public class RabbitConnectionTest {
         factory.setPassword("rabbit_password");
         factory.setHost("47.52.97.135");
         factory.setVirtualHost("/");
-        factory.setPort(15672);
+        factory.setPort(5672);
+
         Connection connection = factory.newConnection();
         Channel channel = connection.createChannel();
-        channel.queueDeclare(QUEUE_NAME, false, false, false, null);
-        System.out.println(" [*] Waiting for messages. To exit press CTRL+C");
+
+        channel.queueDeclare("QUEUE_NAME", true, false, false, null);
+        String message = "Hello World!";
+        channel.basicPublish("EXCHANGE_NAME", "ROUTING_KEY", null, message.getBytes());
+        System.out.println(" [x] Sent '" + message + "'");
+
+        channel.close();
+        connection.close();
 
     }
 
