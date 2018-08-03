@@ -1,17 +1,14 @@
 package com.baidu.springbootstarter;
 
-import com.baidu.springbootstarter.model.User;
-import org.apache.commons.logging.LogFactory;
 import org.mybatis.spring.annotation.MapperScan;
-import org.springframework.amqp.core.*;
-import org.springframework.amqp.rabbit.annotation.RabbitHandler;
-import org.springframework.amqp.rabbit.annotation.RabbitListener;
+import org.springframework.amqp.core.Binding;
+import org.springframework.amqp.core.BindingBuilder;
+import org.springframework.amqp.core.DirectExchange;
+import org.springframework.amqp.core.Queue;
 import org.springframework.amqp.rabbit.config.SimpleRabbitListenerContainerFactory;
 import org.springframework.amqp.rabbit.connection.CachingConnectionFactory;
 import org.springframework.amqp.rabbit.connection.ConnectionFactory;
-import org.springframework.amqp.rabbit.core.ChannelAwareMessageListener;
 import org.springframework.amqp.rabbit.core.RabbitTemplate;
-import org.springframework.amqp.rabbit.listener.SimpleMessageListenerContainer;
 import org.springframework.amqp.support.converter.Jackson2JsonMessageConverter;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.SpringApplication;
@@ -22,9 +19,7 @@ import org.springframework.cache.annotation.EnableCaching;
 import org.springframework.context.annotation.Bean;
 import org.springframework.scheduling.annotation.EnableScheduling;
 
-import static com.baidu.springbootstarter.util.Constants.EXCHANGE_NAME;
-import static com.baidu.springbootstarter.util.Constants.QUEUE_NAME;
-import static com.baidu.springbootstarter.util.Constants.ROUTING_KEY;
+import static com.baidu.springbootstarter.util.Constants.*;
 
 @SpringBootApplication
 @EnableScheduling
