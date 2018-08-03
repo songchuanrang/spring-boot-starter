@@ -20,6 +20,13 @@ public class HelloWorldController {
         return user;
     }
 
+    @RequestMapping(value = "/sendById/{id}")
+    public User sendById(@PathVariable int id) {
+        User user = userService.findById(id);
+        userService.save(user);
+        return user;
+    }
+
     @RequestMapping(value = "/findAll")
     public List<User> findAll() {
         return userService.findAll();
