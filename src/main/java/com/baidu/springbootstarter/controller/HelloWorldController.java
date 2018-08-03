@@ -5,6 +5,7 @@ import com.baidu.springbootstarter.service.UserService;
 import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
+import java.util.List;
 
 @RestController
 @RequestMapping("/hello")
@@ -14,10 +15,14 @@ public class HelloWorldController {
     private UserService userService;
 
     @RequestMapping(value = "/index/{id}")
-    public User index(@ModelAttribute User user) {
-        System.out.println(user.getId());
-        userService.save(user);
+    public User index(@PathVariable int id) {
+        User user = userService.findById(id);
         return user;
+    }
+
+    @RequestMapping(value = "/findAll")
+    public List<User> findAll() {
+        return userService.findAll();
     }
 
     @RequestMapping("/helloworld")

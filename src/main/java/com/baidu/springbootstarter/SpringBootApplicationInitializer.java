@@ -2,6 +2,7 @@ package com.baidu.springbootstarter;
 
 import com.baidu.springbootstarter.model.User;
 import org.apache.commons.logging.LogFactory;
+import org.mybatis.spring.annotation.MapperScan;
 import org.springframework.amqp.core.*;
 import org.springframework.amqp.rabbit.annotation.RabbitHandler;
 import org.springframework.amqp.rabbit.annotation.RabbitListener;
@@ -28,6 +29,7 @@ import static com.baidu.springbootstarter.util.Constants.ROUTING_KEY;
 @SpringBootApplication
 @EnableScheduling
 @EnableCaching
+@MapperScan("com.baidu.springbootstarter.dao")
 public class SpringBootApplicationInitializer extends SpringBootServletInitializer {
 
     @Value("${spring.rabbitmq.host}")
