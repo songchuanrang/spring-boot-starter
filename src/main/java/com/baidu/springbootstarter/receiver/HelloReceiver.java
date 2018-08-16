@@ -7,16 +7,17 @@ import org.springframework.amqp.rabbit.annotation.RabbitHandler;
 import org.springframework.amqp.rabbit.annotation.RabbitListener;
 import org.springframework.stereotype.Component;
 
-import static com.baidu.springbootstarter.util.Constants.QUEUE_NAME;
+import static com.baidu.springbootstarter.util.Constants.QUEUE_NAME_USER_RETRY;
 
 @Component
-@RabbitListener(queues = QUEUE_NAME, containerFactory = "rabbitListenerContainerFactory")
+@RabbitListener(queues = QUEUE_NAME_USER_RETRY, containerFactory = "rabbitListenerContainerFactory")
 public class HelloReceiver {
 
     private Log logger = LogFactory.getLog(getClass());
 
     @RabbitHandler()
     public void process(User user) {
+
         logger.info("Receiver : " + user);
     }
 
