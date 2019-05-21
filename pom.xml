@@ -114,18 +114,22 @@
 			<plugin>
 				<groupId>com.spotify</groupId>
 				<artifactId>dockerfile-maven-plugin</artifactId>
-				<version>1.3.7</version>
+				<version>1.4.10</version>
 				<configuration>
-					<dockerHost>http://172.31.36.4:2375</dockerHost>
-					<imageName>${docker.image.prefix}/${project.artifactId}</imageName>
-					<dockerDirectory>${project.basedir}/src/main/docker</dockerDirectory>
-					<resources>
-						<resource>
-							<targetPath>/</targetPath>
-							<directory>${project.build.directory}</directory>
-							<include>${project.build.finalName}.jar</include>
-						</resource>
-					</resources>
+					<repository>${docker.image.prefix}/${project.artifactId}</repository>
+					<buildArgs>
+						<JAR_FILE>target/${project.build.finalName}.jar</JAR_FILE>
+					</buildArgs>
+<!--					<dockerHost>http://172.31.36.4:2375</dockerHost>-->
+<!--					<imageName>${docker.image.prefix}/${project.artifactId}</imageName>-->
+<!--					<dockerDirectory>${project.basedir}/src/main/docker</dockerDirectory>-->
+<!--					<resources>-->
+<!--						<resource>-->
+<!--							<targetPath>/</targetPath>-->
+<!--							<directory>${project.build.directory}</directory>-->
+<!--							<include>${project.build.finalName}.jar</include>-->
+<!--						</resource>-->
+<!--					</resources>-->
 				</configuration>
 			</plugin>
 		</plugins>
