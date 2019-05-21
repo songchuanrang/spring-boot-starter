@@ -1,3 +1,4 @@
+
 spring:
   profiles:
     active: prod
@@ -7,3 +8,5 @@ logging:
 mybatis:
   mapper-locations: classpath:mapping/*.xml
   type-aliases-package: com.baidu.springbootstarter.model
+server:
+  port: 80
