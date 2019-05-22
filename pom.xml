@@ -132,11 +132,11 @@
 					</dependency>
 				</dependencies>
 				<configuration>
-					<repository>http://47.52.97.137:2375/hush/${project.build.finalName}</repository>
+					<repository>${project.groupId}/${project.build.finalName}</repository>
 					<contextDirectory>${project.basedir}</contextDirectory>
 					<useMavenSettingsForAuth>true</useMavenSettingsForAuth>
 					<dockerfile>Dockerfile</dockerfile>
-					<tag>${version}</tag>
+					<tag>${project.version}</tag>
 					<buildArgs>
 						<JAR_FILE>target/${project.build.finalName}.jar</JAR_FILE>
 					</buildArgs>
