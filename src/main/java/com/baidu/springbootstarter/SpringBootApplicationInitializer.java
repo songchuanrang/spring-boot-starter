@@ -7,10 +7,12 @@ import org.springframework.boot.builder.SpringApplicationBuilder;
 import org.springframework.boot.web.servlet.support.SpringBootServletInitializer;
 import org.springframework.cache.annotation.EnableCaching;
 import org.springframework.scheduling.annotation.EnableScheduling;
+import springfox.documentation.swagger2.annotations.EnableSwagger2;
 
 @SpringBootApplication
 @EnableScheduling
 @EnableCaching
+@EnableSwagger2
 @MapperScan("com.baidu.springbootstarter.dao")
 public class SpringBootApplicationInitializer extends SpringBootServletInitializer {
 
