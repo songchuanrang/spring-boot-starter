@@ -23,7 +23,12 @@ public class UserController extends CommonController {
     @ApiOperation("根据id查询用户")
     @GetMapping(value = "/findById/{id}")
     public Result<User> findById(@PathVariable int id) {
-        return sendSuccess(userService.findById(id));
+        User user = userService.findById(id);
+        if (user == null) {
+            return sendFailure(Result.FAILURE_CODE, "未查询到相关用户");
+        } else {
+            return sendSuccess(user);
+        }
     }
 
     @ApiOperation("查询所有用户")
