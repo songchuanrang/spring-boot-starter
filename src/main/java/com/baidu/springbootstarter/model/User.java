@@ -1,11 +1,13 @@
 package com.baidu.springbootstarter.model;
 
+import com.alibaba.fastjson.annotation.JSONField;
 import lombok.Data;
 
 @Data
 public class User {
-    private int id;
+    private Integer id;
     private String username;
+    @JSONField(serialize = false)
     private String password;
-    private int age;
+    private Integer age;
 }

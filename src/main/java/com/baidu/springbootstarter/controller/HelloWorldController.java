@@ -1,5 +1,7 @@
 package com.baidu.springbootstarter.controller;
 
+import com.baidu.springbootstarter.common.CommonException;
+import com.baidu.springbootstarter.common.Result;
 import com.baidu.springbootstarter.model.User;
 import com.baidu.springbootstarter.service.UserService;
 import io.swagger.annotations.Api;
@@ -32,8 +34,9 @@ public class HelloWorldController {
     }
 
     @GetMapping(value = "/findAll")
-    public List<User> findAll() {
-        return userService.findAll();
+    public Result<List<User>> findAll() {
+        throw new CommonException(Result.FAIL_CODE, "参数异常！");
+//        return Result.SUCCESS.res(userService.findAll());
     }
 
     @GetMapping("/helloworld")
